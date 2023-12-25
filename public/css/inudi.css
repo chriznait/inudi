@@ -1,0 +1,38 @@
+.jumbotron {
+    background:url(../img/blur.jpg) no-repeat center center;
+    background-size: cover;
+    color: #155290;
+    padding: 100px 25px;
+    line-height: 1.1;
+    padding:30px;
+}
+.jumbotron-heading{
+    font-weight: bolder;
+    text-shadow: #155290 0.05em 0.05em 0.1em;
+}
+.instituto{
+    font-weight: bolder;
+    text-shadow: #155290 0.05em 0.05em 0.1em;
+    font-size:large;
+
+}
+.card-img-top{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    object-position: center;
+}
+.titulo{
+    font-weight: 700!important;
+    font-size:large;
+    color:#133496!important;
+    line-height: 1em;
+    font-size: 130%;
+    letter-spacing:1.5px;
+}
+.spanIni{
+    padding: 6px;
+    background-color: #39afa3;
+    color: white;
+    border-radius: 3px;
+}
