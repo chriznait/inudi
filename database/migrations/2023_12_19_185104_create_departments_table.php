@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('nombreDepartamento', 100);
-            $table->integer('codigoDepartamento');
+            $table->integer('codigoDepartamento')->unique();
             $table->integer('country_id')->unsigned();
             $table->timestamps();
             $table->foreign('country_id')->references('id')->on('countries');

@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RegisteredController;
+use App\Http\Controllers\MailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,3 +66,7 @@ Route::post('person/store', [PersonController::class, 'store'])->name('person.st
 //registered
 Route::get('registered/index/{id}', [RegisteredController::class, 'index'])->name('registered.index')->middleware('auth');
 Route::delete('registered/destroy/{id}', [RegisteredController::class, 'destroy'])->name('registered.destroy')->middleware('auth');
+Route::get('registered/matricular/{id}', [RegisteredController::class, 'matricular'])->name('registered.matricular')->middleware('auth');
+
+//mail
+Route::get('mail/send/{id}', [MailController::class, 'sendEmail'])->name('mail.send')->middleware('auth');

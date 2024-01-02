@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('provinces', function (Blueprint $table) {
             $table->id();
             $table->string('nombreProvincia', 150);
-            $table->unsignedBigInteger('idDepartamento');
+            $table->integer('idDepartamento')->unsigned();
             $table->integer('codigoProvincia');
             $table->integer('estado')->default(1);
             $table->foreign('idDepartamento')->references('id')->on('departments');

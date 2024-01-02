@@ -60,7 +60,7 @@
                             <td>{{ $inscrito->fechaPago }}</td>
                             <td>
                                 <a href="" class="btn btn-primary btn-sm">Editar</a>
-                                <a href="" class="btn btn-success btn-sm">Matricular</a>
+                                <a href="{{ route('registered.matricular', $inscrito->id) }}" class="btn btn-success btn-sm">Matricular</a>
                                 <form action="{{ route('registered.destroy', $inscrito->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')

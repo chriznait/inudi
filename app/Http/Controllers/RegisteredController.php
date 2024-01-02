@@ -44,4 +44,11 @@ class RegisteredController extends Controller
         return redirect()->route('registered.index', $inscrito->idCurso)->with('success-destroy', 'Se elimino la inscripcion exitosamente');
     }
 
+
+    public function matricular($id){
+
+        ($id);
+        return redirect()->route('mail.send', $id)->with('success', 'Se envio el correo exitosamente');
+    }
+
 }

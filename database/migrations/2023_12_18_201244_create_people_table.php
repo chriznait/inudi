@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('tipoDocumento', 50);
             $table->string('nroDocumento',10)->unique();
-            $table->string('nombre', 100);
-            $table->string('apellido', 100);
+            $table->string('nombre', 150);
+            $table->string('apellido', 150);
             $table->string('email', 100)->unique();
             $table->string('telefono', 100)->nullable();
             $table->string('profesion', 100)->nullable();
