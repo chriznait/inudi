@@ -62,6 +62,10 @@ Route::get('certificados/ver/{id}', [CertificadoController::class, 'ver'])->name
 Route::get('person/index', [PersonController::class, 'index'])->name('person.index')->middleware('auth');
 Route::get('person/create', [PersonController::class, 'create'])->name('person.create')->middleware('auth');
 Route::post('person/store', [PersonController::class, 'store'])->name('person.store')->middleware('auth');
+Route::get('person/edit/{person}', [PersonController::class, 'edit'])->name('person.edit')->middleware('auth');
+Route::put('person/update/{person}', [PersonController::class, 'update'])->name('person.update')->middleware('auth');
+Route::delete('person/destroy/{person}', [PersonController::class, 'destroy'])->name('person.destroy')->middleware('auth');
+Route::get('person/show/{person}', [PersonController::class, 'show'])->name('person.show')->middleware('auth');
 
 //registered
 Route::get('registered/index/{id}', [RegisteredController::class, 'index'])->name('registered.index')->middleware('auth');

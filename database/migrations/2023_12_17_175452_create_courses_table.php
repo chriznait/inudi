@@ -21,7 +21,8 @@ return new class extends Migration
             $table->date('fechaInicioInscripcion');
             $table->date('fechaFinInscripcion');
             $table->integer('cupo');
-            $table->boolean('estado'); 
+            $table->string('linkGrupo',60)->nullable();
+            $table->boolean('estado')->default(1); 
             $table->timestamps();
         });
     }

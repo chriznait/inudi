@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Registered;
 use Illuminate\Http\Request;
 use App\Http\Requests\CourseRequest;
 
@@ -13,12 +14,13 @@ class CourseController extends Controller
      */
     public function index(Request $request)
     {
-        $filterValue = $request->input('filterValue');
-        $courseFilter = Course ::where('nombreCurso', 'like', "%$filterValue%")
-        ->Where('estado', '=', '1')->orderBy('id', 'desc')
-        ->paginate(10);
         
-        $courses = $courseFilter;
+        $courses = Course::where('estado', '=', '1')->orderBy('id', 'desc')->get();
+        foreach ($courses as $course) {
+            $course->registered = Registered::where('idCurso', '=', $course->id)
+            ->where('estado', '=', '2')
+            ->count();
+        }
 
         return view('courses.index', [
             'courses' => $courses,

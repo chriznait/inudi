@@ -8,6 +8,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
+use App\Models\Registered;
+use App\Models\Person;
+use App\Models\Course;
 
 class RegistroEmail extends Mailable
 {
@@ -19,7 +23,7 @@ class RegistroEmail extends Mailable
      */
     public function __construct($mailData)
     {
-        $this->idPersona = $mailData;
+        $this->id = $mailData;
     }
 
     /**
@@ -28,7 +32,8 @@ class RegistroEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: "INUDI - REGISTRO AL CURSO",
+            from: new Address('admin@inudi.edu.pe','INSITUTTO UNIVERSITARIO DE INVESTIGACIÓN Y DESARROLLO INTEGRAL'),
+            subject: 'INUDI - REGISTRO AL CURSO',
         );
     }
 
@@ -37,10 +42,17 @@ class RegistroEmail extends Mailable
      */
     public function content(): Content
     {
+        $registro = Registered::where('id', '=', $this->id)->first();
+        $persona = Person::find($registro->idPersona);
+        //$registroPer = Registered::where('idPersona', '=', $this->idPersona)->first();
+        $curso = Course::find($registro->idCurso);
+
         return new Content(
             view: 'emails.registro',
             with: [
-                'idPersona' => $this->idPersona,
+                'persona' => $persona,
+                'curso' => $curso,
+                'matricula'=> $registro,
             ],
         );
     }

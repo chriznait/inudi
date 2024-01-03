@@ -1,4 +1,31 @@
 @extends('adminlte::page')
+@section('css')
+
+    <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+@endsection
+@section('js')
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js" defer></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js" defer></script>
+    <script>
+        $(document).ready(function() {
+            $('#courses').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                    "zeroRecords": "No se encontro ningun registro",
+                    "info": "Mostrando la pagina _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        'next': 'Siguiente',
+                        'previous': 'Anterior'
+                    }
+                }
+            });
+        });
+    </script>
+@endsection
 
 @section('content_header')
     <div class="row">
@@ -30,58 +57,60 @@
                     <a href="{{route('person.create') }}" class="btn btn-primary">Nuevo Participante</a>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <form action="{{route('courses.index')}}" method="get">
-                        <div class="mb-3 row">
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm rounded border-primary text-secondary" name="filterValue" placeholder="Buscar" >
-                            </div>
-                            <div class="col-sm-3">
-                                <button type="submit" class="btn btn-sm btn-info">Buscar</button>
-                            </div>
-                        </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-striped table-bordered table-hover" id="courses">
-                <thead>
+            <table class="table table-striped table-bordered table-hover table-responsive " id="courses">
+                <thead class="bg-info text-white text-center">
                     <tr>
                         <th>ID</th>
                         <th>Dni</th>
+                        <th>Apellidos</th>
                         <th width="40%" >Nombre</th>
                         <th>email</th>
                         <th>telefono</th>
                         <th>Profesion</th>
+                        <th>Domicilio</th>
                         <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($persons as $person)
                         <tr>
-                            <td>{{$person->id}}</td>
-                            <td>{{$person->nombreCurso }}</td>
+                            <th class="text-center" scope="row">{{ $loop->iteration }}</th>
+                            <td>{{$person->nroDocumento }} </td>
                             <td>
-                                {{$person->abrCurso}}
+                                {{$person->apellido}}
                             </td>
-                            <td>{{$person->fechaInicio}}</td>
-                            <td>{{$person->cupo}}</td>
+                            <td>{{$person->nombre }}</td>
+                            <td>{{$person->email}}</td>
+                            <td>{{$person->telefono}}</td>
+                            <td>{{$person->profesion}}</td>
                             <td>
-                                <a href="{{ route('courses.edit', $person) }}" class="btn btn-sm btn-primary">Editar</a>
-                                <form action="{{ route('courses.destroy', $person) }}" method="POST" style="display: inline-block;">
+                                {{$person->departamento}} - {{$person->provincia}} - {{$person->distrito}}
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('person.edit', $person) }}" class="btn btn-sm btn-primary">
+                                    <span class="fas fa-edit "></span>
+                                </a>
+                                <form action="{{ route('person.destroy', $person) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Seguro que desea eliminar?');">Eliminar</button>
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Seguro que desea eliminar?');">
+                                        <span class="fas fa-trash-alt"></span>
+                                    </button>
                                 </form>
-                                <a href="{{ route('courses.show', $person) }}" class="btn btn-sm btn-info @if($person->cupo == 0) disabled @endif">Mostrar</a>
+                                <a href="{{ route('person.show', $person) }}" class="btn btn-sm btn-info">
+                                    <span class="fas fa-eye "></span>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div class="text-center mt-3">
-                {{$persons->appends(["filterValue"=> $filterValue])->links()}}
-            </div>
+            
         </div>
     </div>
 @stop

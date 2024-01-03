@@ -72,6 +72,15 @@
                             <input type="date" class="form-control" name="fechaFinInscripcion" id="fechaFinInscripcion" placeholder="Fin Inscripcion">
                         </div>
                     </div>
+                    <span class="text-success">
+                        Link de grupo de whatsapp
+                    </span>
+                    <div class="mb-3 row">
+                        <label for="linkGrupo" class="col-sm-2 col-form-label">Link Grupo</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="linkGrupo" id="linkGrupo" placeholder="Link de grupo de whatsapp">
+                        </div>
+                    </div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>

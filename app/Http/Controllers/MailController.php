@@ -16,14 +16,21 @@ class MailController extends Controller
         $inscrito = Registered::find($id);
         
         $correo = Person::find($inscrito->idPersona);
-        dd($correo->email);
-       /* $mailData = [
+        $emailPersona =$correo->email;
+        $mailData = [
             'title' => 'Correo de INUDI - Registro al curso',
             'body' => 'Tu registro al curso se ha realizado con exito'.$inscrito->idPersona,
         ];
         
-        Mail::to("admin@inudi.edu.pe")->send(new RegistroEmail($inscrito->idPersona));
-*/
+        Mail::to($emailPersona)->send(new RegistroEmail($id));
+        $registro = Registered::where('id', '=', $id)->first();
+        $registro->update([
+            'estado' => '2',
+            'fechaMatricula' => date('Y-m-d H:i:s')
+        ]);
+
+        return redirect()->route('registered.index', $inscrito->idCurso)->with('success', 'Se envio el correo exitosamente');
+
         //dd($inscrito->idPersona);
     }
 }

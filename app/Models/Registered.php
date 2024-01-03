@@ -17,5 +17,6 @@ class Registered extends Model
         'idUsuario',
         'estado',
         'fechaInscripcion',
+        'fechaMatricula',
     ];
 }

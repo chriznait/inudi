@@ -18,6 +18,7 @@ class Course extends Model
         'fechaFin',
         'fechaInicioInscripcion',
         'fechaFinInscripcion',
+        'linkGrupo',
         'estado',
     ];
 

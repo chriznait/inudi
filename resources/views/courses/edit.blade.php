@@ -75,6 +75,17 @@
                             
                         </div>
                     </div>
+                    <span class="text-success">
+                        Link de grupo whatsapp del curso
+                    </span>
+                    <div class="mb-3 row">
+                        
+                            <label for="linkGrupo" class="col-sm-3 col-form-label">link Grupo whatsapp</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="linkGrupo" id="linkGrupo" placeholder="Link de grupo de whatsapp" value="{{$course->linkGrupo }}">
+                            </div>
+        
+                    </div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Modificar Registro</button>

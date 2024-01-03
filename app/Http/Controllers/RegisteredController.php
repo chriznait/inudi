@@ -8,6 +8,10 @@ use App\Models\Person;
 
 use App\Models\Course;
 
+//1: registrado
+//2: matriculado
+//3: certificado
+//0: eliminado
 class RegisteredController extends Controller
 {
     
@@ -16,7 +20,7 @@ class RegisteredController extends Controller
         $curso = Course::find($id);
         $inscritos = Registered::join('people', 'people.id', '=', 'registereds.idPersona')
         ->where('registereds.idCurso', '=', $id)
-        ->where('registereds.estado', '=', '1')
+        ->where('registereds.estado', '>=', '1')
         ->get([
             'registereds.id',
             'people.nroDocumento',
@@ -26,6 +30,8 @@ class RegisteredController extends Controller
             'people.telefono',
             'registereds.montoPagado',
             'registereds.fechaPago',
+            'registereds.fechaMatricula',
+            'registereds.estado',
             'registereds.fechaInscripcion']);
 
         return view('registered.index', [
@@ -47,7 +53,7 @@ class RegisteredController extends Controller
 
     public function matricular($id){
 
-        ($id);
+        
         return redirect()->route('mail.send', $id)->with('success', 'Se envio el correo exitosamente');
     }
 

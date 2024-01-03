@@ -324,7 +324,7 @@ return [
             'url'  => 'admin/usuarios',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
+        /*[
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -361,7 +361,7 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ],*/
         ['header' => 'ACADEMICO'],
         [
             'text' => 'Estudiantes',
@@ -371,12 +371,14 @@ return [
         [
             'text' => 'Cursos',
             'url'  => 'courses/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-book',
+            'icon_color' => 'yellow',
+            'classes' => 'text-bold text-black',
         ],
         [
             'text' => 'Matriculados',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-book',
+            'icon' => 'fas fa-fw fa-user-graduate',
         ],
         [
             'text'       => 'information',
