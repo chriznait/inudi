@@ -53,12 +53,15 @@
     <div class="card">
         <div class="card-header container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <a href="{{route('person.create') }}" class="btn btn-primary">Nuevo Participante</a>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-6 col-md-6 col-sm-6">
                     
                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <a href="{{route('person.create') }}" class="btn btn-primary float-right">
+                        <span class="fas fa-plus-circle"></span> Crear persona
+                    </a>
+                </div>
+                
             </div>
         </div>
         <div class="card-body">

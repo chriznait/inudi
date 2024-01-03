@@ -125,5 +125,62 @@
                 </div>           
             </div>
         </div>
+        <br>
+        <footer class="footer text-center text-lg-start text-white" >
+            
+                <section class=" "style="background-color: #6351ce">
+                
+                    <div class="container text-center text-md-start mt-5">
+                        <div class="row mt-3">
+                            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-3">
+                                <img src="{{ asset('img/logo.png') }}" alt="" width="100px">
+                            </div>
+                            <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-5">
+                                <!-- Content -->
+                                <br>
+                                <h6 class="text-uppercase fw-bold">INUDI - PERÚ</h6>
+                                <hr
+                                    class="mb-4 mt-0 d-inline-block mx-auto"
+                                    style="width: 60px; background-color: #7c4dff; height: 2px"
+                                    />
+                                <p>
+                                    El Instituto Universitario de Innovación Ciencia y Tecnología Inudi Perú te ofrece la formación académica de educación continua en diplomados, cursos, especializaciones y posdoctorados. Te conduce a la certificación de diplomas y certificados de nivel universitario.
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <br>
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    <strong>REVISTAS</strong>
+                                </h6>
+                                <p>
+                                    <a href="https://revistainnovaeducacion.com/index.php/rie/issue/archive" class="text-reset">Revista Innova Educacion</a>
+                                </p>
+                                <p>
+                                    <a href="https://accionesmedicas.com/index.php/ram" class="text-reset">Acciones Médicas</a>
+                                </p>
+                                
+                            </div>
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                                <br>
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    <strong>Contacto</strong>
+                                </h6>
+                                <p><i class="fas fa-home me-3"></i> Puno, Perú</p>
+                                <p>
+                                    <i class="fas fa-envelope me-3"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                        <span>
+                            INSTITUTO UNIVERSITARIO DE INVESTIGACIÓN INUDI PERÚ
+                            © 2024
+                        </span>
+
+                    </div>
+
+                </section>
+            
+        </footer>
     </body>
 </html>

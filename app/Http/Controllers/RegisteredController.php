@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Registered;
 use App\Models\Person;
+use App\Exports\RegisteredExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\Models\Course;
 
@@ -33,10 +35,12 @@ class RegisteredController extends Controller
             'registereds.fechaMatricula',
             'registereds.estado',
             'registereds.fechaInscripcion']);
+        $total = Registered::where('idCurso', '=', $id)->where('estado', '=', '2')->get()->count();
 
         return view('registered.index', [
             'curso' => $curso,
-            'inscritos' => $inscritos
+            'inscritos' => $inscritos,
+            'total' => $total
         ]);
     }
 
@@ -56,5 +60,11 @@ class RegisteredController extends Controller
         
         return redirect()->route('mail.send', $id)->with('success', 'Se envio el correo exitosamente');
     }
+
+    public function export($id){
+        
+        return Excel::download(new RegisteredExport($id), 'inscritos.xlsx');
+    }
+    
 
 }

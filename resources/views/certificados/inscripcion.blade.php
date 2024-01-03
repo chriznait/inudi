@@ -68,15 +68,30 @@
                             <div class="alert alert-success">
                                 <strong>{{session('success-registrado')}}</strong>
                             </div>
-                        @elseif( $valor == 2)
+                        @elseif( $valor == 1)
                             <div class="alert alert-warning">
                                 <strong>Estimado participante, su inscripcion esta en proceso de validacion, en breve se le enviara un correo con la confirmacion de su inscripcion</strong>
+                            </div>
+                        @elseif( $valor == 2)
+                            <div class="alert alert-success">
+                                <strong>
+                                    Estimado participante, su inscripcion ha sido validada, revise su correo electronico con la cual se inscribio, se le ha enviado un correo con el link de acceso al curso.
+                                    El link al grupo de whatsapp se le envio al correo electronico.
+                                </strong>
+                                <p>
+                                    <strong>Nota: </strong>Si no encuentra el correo en su bandeja de entrada, revise en la bandeja de spam o correo no deseado.
+                                </p>
+                                <p>
+                                    Estado de inscripcion: <strong class="text-success"
+                                    >VALIDADO</strong>
+                                </p>
                             </div>
 
                         @endif
 
+
                         <div class="card-body">
-                            @if($valor!=2)
+                            @if($valor==0)
 
                                 @if ($valor=='1')
                                     <form class="row g-12" method="POST" action="{{ route('certificados.update', $datos)}}">

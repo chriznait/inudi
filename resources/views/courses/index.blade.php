@@ -30,7 +30,7 @@
 @section('content_header')
     <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">CURSOS</h1>
+            <h1 class="m-0 text-dark">REGISTRO DE CURSOS</h1>
         </div>
     </div>
 @stop
@@ -53,8 +53,11 @@
     <div class="card">
         <div class="card-header container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <a href="{{route('courses.create') }}" class="btn btn-primary">Crear curso</a>
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{route('courses.create') }}" class="btn btn-primary float-right">Crear curso</a>
                 </div>
                 
             </div>

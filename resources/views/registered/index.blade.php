@@ -62,6 +62,7 @@
                 @endif
 
             </div>
+            <hr>
             <div class="row">
                 @if ( $curso->linkGrupo == null )
                     <div class="col-sm-6">
@@ -70,19 +71,22 @@
                 @else
                     <div class="col-sm-6">
                         <a href="{{ $curso->linkGrupo }}" target="_blank" class="btn btn-success btn-sm">Link de grupo</a>
+                        
                     </div>
     
                 @endif
                 <div class="col-sm-6">
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <a href="{{ route('registered.export', $curso->id) }}"
-                         class="btn btn-outline-primary btn-sm">
-                            <span class="fas fa-file-excel"> Excel</span>
-                        </a>
-                        <a href="" class="btn btn-outline-danger btn-sm">
-                            <span class="fas fa-file-pdf"> PDF</span>
-                        </a> 
-                    </div>
+                    @if($total != 0)
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="{{ route('registered.export', $curso->id) }}"
+                            class="btn btn-outline-primary btn-sm">
+                                <span class="fas fa-file-excel"> Excel</span>
+                            </a>
+                            <a href="" class="btn btn-outline-danger btn-sm">
+                                <span class="fas fa-file-pdf"> PDF</span>
+                            </a> 
+                        </div>
+                    @endif
                     
                 </div>
             </div>
@@ -90,7 +94,7 @@
         </div>
 
         <div class="card-body">
-            <table id="registros" class="table table-bordered table-striped">
+            <table id="registros" class="table table-bordered table-striped table-responsive ">
                 <thead class="bg-primary text-white text-center">
                     <tr>
                         <th>Nª Doc.</th>
@@ -123,13 +127,13 @@
                                     <span class="badge badge-info">Certificado</span>
                                 @endif
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <a href="" class="btn btn-primary btn-sm">
                                     <span class="fas fa-edit "></span>
                                 </a>
                                 @if($curso->linkGrupo != null && $inscrito->estado == 1)
                                     <a href="{{ route('registered.matricular', $inscrito->id) }}" class="btn btn-success btn-sm">Matricular </a>
-                                @endif
+                                
                                 <form action="{{ route('registered.destroy', $inscrito->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')
@@ -137,6 +141,7 @@
                                     <span class="fas fa-trash-alt"></span>
                                     </button>
                                 </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

@@ -71,6 +71,8 @@ Route::get('person/show/{person}', [PersonController::class, 'show'])->name('per
 Route::get('registered/index/{id}', [RegisteredController::class, 'index'])->name('registered.index')->middleware('auth');
 Route::delete('registered/destroy/{id}', [RegisteredController::class, 'destroy'])->name('registered.destroy')->middleware('auth');
 Route::get('registered/matricular/{id}', [RegisteredController::class, 'matricular'])->name('registered.matricular')->middleware('auth');
+//export
+Route::get('registered/export/{id}', [RegisteredController::class, 'export'])->name('registered.export')->middleware('auth');
 
 //mail
 Route::get('mail/send/{id}', [MailController::class, 'sendEmail'])->name('mail.send')->middleware('auth');

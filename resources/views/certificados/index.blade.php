@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
+   
+<head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Certificado Inudi</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    
+        <!--icons-->
+        
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/inudi.css') }}">
@@ -36,6 +40,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
+                    <div class="card shadow">
+                        <div class="card-header text-bg-success  text-center">
+                            <h5><strong>Menú Principal</strong></h5>
+                        </div>
+                        
+                        <div class="list-group" id="menuList">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                Cursos y certificados
+                            </a>
+                            <a href="https://inudi.edu.pe" class="text-decoration-none text-dark list-group-item list-group-item-action">
+                                <span icon="fas fa-bolt" class="glyphicon glyphicon-home" aria-hidden="true"></span> INUDI
+                            </a>
+                            <a href="https://inudi.edu.pe/revistas" class="text-decoration-none text-dark list-group-item list-group-item-action">Revista - INUDI</a>
+                            <a href="https://campus.inudi.edu.pe/" class="text-decoration-none text-dark list-group-item list-group-item-action">Aula virtual - INUDI</a>
+                            <a href="https://certificado.inudi.edu.pe/login" class="text-decoration-none text-dark list-group-item list-group-item-action">Admin - INUDI</a>
+                        </div>
+                    </div>
+                    <br>
                     <div class="card border-success shadow">
                         <div class="card-header  text-center">
                             <h5><strong>Consultar certificado</strong></h5>

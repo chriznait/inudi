@@ -1,3 +1,7 @@
+html{
+    font-family: 'Times New Roman', Times, serif;
+
+}
 .jumbotron {
     background:url(../img/blur.jpg) no-repeat center center;
     background-size: cover;
@@ -35,4 +39,15 @@
     background-color: #39afa3;
     color: white;
     border-radius: 3px;
+}
+#menuList{
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #155290;
+    
+    width: 100%;
+}
+#menuList a:hover{
+    background-color: #155290;
+    color:#ffffff;
 }
