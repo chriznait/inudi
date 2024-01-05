@@ -19,7 +19,8 @@ class PersonController extends Controller
      */
     public function index(Request $request)
     {
-        $persons = Person::join('departments', 'departments.id', '=', 'people.idDepartamento')
+        $persons = Person::leftjoin('countries', 'countries.id', '=', 'people.idPais')
+        ->leftjoin('departments', 'departments.id', '=', 'people.idDepartamento')
         ->leftjoin('provinces', 'provinces.id', '=', 'people.idProvincia')
         ->leftjoin('districts', 'districts.id', '=', 'people.idDistrito')
         ->orderBy('people.apellido', 'asc')

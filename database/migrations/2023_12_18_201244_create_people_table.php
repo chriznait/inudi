@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->id();
             $table->string('tipoDocumento', 50);
-            $table->string('nroDocumento',10)->unique();
+            $table->string('nroDocumento',20)->unique();
             $table->string('nombre', 150);
             $table->string('apellido', 150);
-            $table->string('email', 100)->unique();
+            $table->string('email', 100)->nullable();
             $table->string('telefono', 100)->nullable();
             $table->string('profesion', 100)->nullable();
             $table->string('gradoAcademico', 100);

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->integer('idUsuario'); // usuario que valida pago
             $table->integer('estado')->default('1'); //0 = inactivo 1 = registrado 2 = matriculado 3 = certificado
             $table->date('fechaCertificado')->nullable();
-            $table->string('codigoCertificado', 20)->nullable();
+            $table->string('codigoCertificado', 30)->nullable();
             //$tbale->string('linkCertificado', 100)->nullable(); 
-            $table->date('fechaInscripcion');
+            $table->date('fechaInscripcion')->nullable();
             $table->timestamps('fechaMatricula')->nullable();
             $table->foreign('idPersona')->references('id')->on('people');
             $table->foreign('idCurso')->references('id')->on('courses');

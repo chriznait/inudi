@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    @if($valor=='1' or $valor=='2') 
+                    @if($valor>=1) 
                         <div class="alert alert-success border-success shadow" role="alert">
                             <strong>
                                 <h5 class="alert-heading text-center">USUARIO REGISTRADO</h5>
@@ -60,7 +60,7 @@
                 <div class="col-sm-8">
                     <div class="card border-success shadow">
                         <div class="card-header text-center">
-                            <h4><strong>FICHA DE INSCRIPCION </strong>{{$valor}} </h4> 
+                            <h4><strong>FICHA DE INSCRIPCION </h4> 
                             <h5><strong>{{$curso->nombreCurso}}</strong></h5>
                              
                         </div>
@@ -68,11 +68,11 @@
                             <div class="alert alert-success">
                                 <strong>{{session('success-registrado')}}</strong>
                             </div>
-                        @elseif( $valor == 1)
+                        @elseif( $valor == 2)
                             <div class="alert alert-warning">
                                 <strong>Estimado participante, su inscripcion esta en proceso de validacion, en breve se le enviara un correo con la confirmacion de su inscripcion</strong>
                             </div>
-                        @elseif( $valor == 2)
+                        @elseif( $valor == 3)
                             <div class="alert alert-success">
                                 <strong>
                                     Estimado participante, su inscripcion ha sido validada, revise su correo electronico con la cual se inscribio, se le ha enviado un correo con el link de acceso al curso.
@@ -91,7 +91,7 @@
 
 
                         <div class="card-body">
-                            @if($valor==0)
+                            @if($valor==0 || $valor==1)
 
                                 @if ($valor=='1')
                                     <form class="row g-12" method="POST" action="{{ route('certificados.update', $datos)}}">

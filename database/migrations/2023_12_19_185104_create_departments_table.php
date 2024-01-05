@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombreDepartamento', 100);
             $table->integer('codigoDepartamento')->unique();
-            $table->integer('country_id')->unsigned();
+            $table->integer('idPais')->unsigned();
+            //$table->foreign('idCountry')->references('id')->on('countries');
             $table->timestamps();
-            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 

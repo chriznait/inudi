@@ -7,8 +7,8 @@ use App\Models\Course;
 use App\Models\Person;
 use App\Models\country;
 use App\Models\department;
-use App\Models\province;
-use App\Models\district;
+use App\Models\Province;
+use App\Models\District;
 use App\Models\Registered;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CertificadoRequest;
@@ -105,6 +105,18 @@ class CertificadoController extends Controller
                 $valor =1; //existe el dni pero no esta registrado en el curso
             }else{
                 $valor =2; //existe el dni y esta registrado en el curso
+                if ($registroCurso->estado == 2)
+                {
+                    $valor =3; //existe el dni y esta registrado en el curso y esta pagado
+                }
+                if ($registroCurso->estado == 3)
+                {
+                    $valor =4; //el estudiante aprobo el curso
+                }
+                if ($registroCurso->estado == 4)
+                {
+                    $valor =5; //se genero su certificado
+                }
             }
             
         }
@@ -112,8 +124,8 @@ class CertificadoController extends Controller
         $curso = Course::where('id', '=', $idCurso)->first();
         $pais = country::All();
         $departamento = department::where('idPais', '=', $datos->idPais)->get();
-        $provincia = province::where('idDepartamento', '=', $datos->idDepartamento)->get();
-        $distrito = district::where('idProvincia', '=', $datos->idProvincia)->get();
+        $provincia = Province::where('idDepartamento', '=', $datos->idDepartamento)->get();
+        $distrito = District::where('idProvincia', '=', $datos->idProvincia)->get();
         return view('certificados.inscripcion', ['datos' => $datos,
             'pais' => $pais,
             'valor' => $valor,
@@ -135,15 +147,15 @@ class CertificadoController extends Controller
 
     public function getProvincia($id)
     {
-        $provincia = province::where('idDepartamento', '=', $id)->get();
+        $provincia = Province::where('idDepartamento', '=', $id)->get();
         return response()->json($provincia);
     }
 
     public function getDistrito($id)
     {
-        $cod = province::where('id', '=', $id)->first();
+        $cod = Province::where('id', '=', $id)->first();
         $codProv = $cod->codigoProvincia;
-        $distrito = district::where('idProvincia', '=', $codProv)->get();
+        $distrito = District::where('idProvincia', '=', $codProv)->get();
         return response()->json($distrito);
     }
 
