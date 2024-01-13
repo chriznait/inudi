@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('codigoCertificado', 30)->nullable();
             //$tbale->string('linkCertificado', 100)->nullable(); 
             $table->date('fechaInscripcion')->nullable();
-            $table->timestamps('fechaMatricula')->nullable();
+            $table->date('fechaMatricula')->nullable();
             $table->foreign('idPersona')->references('id')->on('people');
             $table->foreign('idCurso')->references('id')->on('courses');
             $table->timestamps();

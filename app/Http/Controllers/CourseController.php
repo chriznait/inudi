@@ -41,6 +41,12 @@ class CourseController extends Controller
     public function store(CourseRequest $request)
     {
         $course = $request->all();
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $name = time().$file->getClientOriginalName();
+            $course['imagen'] = $name;
+            $file->move(public_path().'/cursos/', $name);
+        }
         Course::create($course);
 
         return redirect()->route('courses.index')->with('success', 'Curso creado exitosamente');

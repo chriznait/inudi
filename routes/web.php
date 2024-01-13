@@ -47,7 +47,7 @@ Route::delete('courses/destroy/{course}', [CourseController::class, 'destroy'])-
 Route::get('courses/show/{course}', [CourseController::class, 'show'])->name('courses.show')->middleware('auth');
 
 //ROUTE CERTIFICATE
-Route::get('certificados', [CertificadoController::class, 'index'])->name('certificados.index');
+//Route::get('certificados', [CertificadoController::class, 'index'])->name('certificados.index');
 Route::get('certificados/verificar', [CertificadoController::class, 'verificar'])->name('certificados.verificar');
 Route::get('certificados/{id}/departamento', [CertificadoController::class, 'getDepartamento']);
 Route::get('certificados/{id}/provincia', [CertificadoController::class, 'getProvincia']);

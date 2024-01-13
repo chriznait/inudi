@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('idDepartamento')->unsigned();
             $table->integer('codigoProvincia');
             $table->integer('estado')->default(1);
-            $table->foreign('idDepartamento')->references('id')->on('departments');
+            //$table->foreign('idDepartamento')->references('id')->on('departments');
             $table->timestamps();
         });
     }

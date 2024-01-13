@@ -30,6 +30,7 @@ class CourseRequest extends FormRequest
             'fechaFin' => 'required|date|after:fechaInicio',
             'fechaInicioInscripcion' => 'required|date',
             'fechaFinInscripcion' => 'required|date|after:fechaInicioInscripcion',
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ];
     }
 }

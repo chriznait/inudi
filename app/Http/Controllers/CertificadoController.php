@@ -178,9 +178,11 @@ class CertificadoController extends Controller
 
             $valor =1; //existe el dni pero no esta registrado en el curso
         }
+        //dd($datos);
         return view('certificados.buscar', ['datos' => $datos,
             'valor' => $valor,
-            'certificados' => $certificados
+            'certificados' => $certificados,
+            'dniBuscar' => $dni,
         ]);
     }
     //VER CERTIFICADO DE UNA PERSONA

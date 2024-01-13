@@ -20,6 +20,7 @@ class Course extends Model
         'fechaFinInscripcion',
         'linkGrupo',
         'estado',
+        'imagen',
     ];
 
     protected $attributes = [

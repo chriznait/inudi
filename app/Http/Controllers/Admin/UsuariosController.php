@@ -15,17 +15,17 @@ class UsuariosController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('Admin/usuarios', compact('users'));
+        return view('admin/usuarios', compact('users'));
     }
 
     public function create()
     {
         //return "hola";
-        view('Admin/create');
+        view('admin/create');
     }
 
     public function crear(){
-        return view('Admin/crear');
+        return view('admin/crear');
     }
 
     public function store(Request $request)

@@ -14,7 +14,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('courses.store')}}" method="POST">
+            <form action="{{ route('courses.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="">
                     <div class="mb-3 row">
@@ -72,6 +72,12 @@
                             <input type="date" class="form-control" name="fechaFinInscripcion" id="fechaFinInscripcion" placeholder="Fin Inscripcion">
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen del curso">
+                        </div>
+                    </div> 
                     <span class="text-success">
                         Link de grupo de whatsapp
                     </span>

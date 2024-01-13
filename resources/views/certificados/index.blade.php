@@ -54,7 +54,7 @@
                             </a>
                             <a href="https://inudi.edu.pe/revistas" class="text-decoration-none text-dark list-group-item list-group-item-action">Revista - INUDI</a>
                             <a href="https://campus.inudi.edu.pe/" class="text-decoration-none text-dark list-group-item list-group-item-action">Aula virtual - INUDI</a>
-                            <a href="https://certificado.inudi.edu.pe/login" class="text-decoration-none text-dark list-group-item list-group-item-action">Admin - INUDI</a>
+                            <a href="https://certificados.inudi.edu.pe/login" class="text-decoration-none text-dark list-group-item list-group-item-action">Admin - INUDI</a>
                         </div>
                     </div>
                     <br>
@@ -106,9 +106,14 @@
                     @foreach($courses as $course )
                         <div class="card-deck">
                             <div class="card">
+                                @if($course->imagen)
+                                <img src="{{ asset('cursos').'/'.$course->imagen}}" alt="" class="card-img-top img-responsive">
+                                @else
                                 <img src="{{
                                     asset('img/bn-congreso.jpg')
                                 }}" alt="" class="card-img-top img-responsive">
+                                @endif
+                                
                                 <div class="card-body">
                                     <h2 class="card-title text-center titulo">
                                         <strong>{{$course->nombreCurso}}</strong>

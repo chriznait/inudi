@@ -83,9 +83,16 @@
                 <div class="col-sm-9" id="dvbody">
                     <div class="card border-primary mb-3">
                         <div class="card-header">
+                            @if($datos!=null)
                             <h5 class="card-title text-center text-primary">REGISTRO DE CERTIFICADOS DE:</h5>
                             <h4 class="card-title"> Alumno(a): <strong>{{ $datos->nombre }} {{ $datos->apellido }}</strong></h4>
                             <h5 class="card-title">Dni: <strong>{{ $datos->nroDocumento }}</strong></h5>
+                            @else
+                                <h5 class="card-title text-center text-danger">
+                                    NO SE ENCONTRARON CERTIFICADOS PARA EL DNI: <strong>{{ $dniBuscar }}</strong>
+                                </h5>
+                            @endif
+
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -100,20 +107,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($certificados as $certificado)
-                                        <tr>
-                                            <th class="text-center" scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $certificado->codigoCertificado }}</td>
-                                            <td>{{ $certificado->nombreCurso }}</td>
-                                            <td>{{ $certificado->fechaCertificado }}</td>
-                                            <td class="text-center">
-                                                <a href="{{
-                                                    asset('storage/certificados/'.$certificado->codigoCertificado.'.pdf')
-                                                }}
-                                                " class="btn btn-success btn-sm">Visualizar</a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
+                                        @if($certificados!=null)
+                                            @foreach ($certificados as $certificado)
+                                            <tr>
+                                                <th class="text-center" scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $certificado->codigoCertificado }}</td>
+                                                <td>{{ $certificado->nombreCurso }}</td>
+                                                <td>{{ $certificado->fechaCertificado }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{
+                                                        asset('storage/certificados/'.$certificado->codigoCertificado.'.pdf')
+                                                    }}
+                                                    " class="btn btn-success btn-sm">Visualizar</a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="5" class="text-center">
+                                                    <h5 class="text-danger">NO SE ENCONTRARON CERTIFICADOS PARA EL DNI: <strong>{{ $dniBuscar }}</strong></h5>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

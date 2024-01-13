@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('idProvincia')->unsigned();
             $table->string('codigoUbigeo', 6);
             $table->integer('estado')->default(1);
-            $table->foreign('idProvincia')->references('id')->on('provinces');
+            //$table->foreign('idProvincia')->references('id')->on('provinces');
             $table->timestamps();
         });
     }
