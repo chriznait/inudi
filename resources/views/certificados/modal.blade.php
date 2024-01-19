@@ -26,6 +26,7 @@
                   <button type="submit" class="btn btn-success mb-3">Verificar</button>
                 </div>
             </form>
+            
             <hr>
 
         </div>

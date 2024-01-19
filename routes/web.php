@@ -7,6 +7,7 @@ use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RegisteredController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\MatriculadoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,3 +76,15 @@ Route::get('registered/export/{id}', [RegisteredController::class, 'export'])->n
 
 //mail
 Route::get('mail/send/{id}', [MailController::class, 'sendEmail'])->name('mail.send')->middleware('auth');
+
+//matriculado
+Route::get('matriculados/index', [MatriculadoController::class, 'index'])->name('matriculado.index')->middleware('auth');
+Route::get('matriculados/show/{couse}', [MatriculadoController::class, 'show'])->name('matriculados.show')->middleware('auth');
+//subirCertificado
+Route::post('matriculados/subirCertificado', [MatriculadoController::class, 'subirCertificado'])->name('matriculados.subirCertificado')->middleware('auth');
+//export
+Route::get('matriculados/export/{id}', [MatriculadoController::class, 'export'])->name('matriculado.export')->middleware('auth');
+Route::get('matriculados/editCertificado/{id}', [MatriculadoController::class, 'editCertificado'])->name('matriculados.editCertificado')->middleware('auth');
+Route::put('matriculados/updateCertificado', [MatriculadoController::class, 'updateCertificado'])->name('matriculados.updateCertificado')->middleware('auth');
+Route::get('matriculados/download/{id}', [MatriculadoController::class, 'download'])->name('matriculados.download')->middleware('auth');
+Route::put('matriculados/generarCertificado', [MatriculadoController::class, 'generarCertificado'])->name('matriculados.generarCertificado')->middleware('auth');

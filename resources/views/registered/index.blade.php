@@ -124,7 +124,11 @@
                                 @elseif ($inscrito->estado == 2)
                                     <span class="badge badge-success">Matriculado</span>
                                 @elseif ($inscrito->estado == 3 )
-                                    <span class="badge badge-info">Certificado</span>
+                                    <span class="badge badge-info">Finalizo curso</span>
+                                @elseif ($inscrito->estado == 4)
+                                    <span class="badge badge-primary">Certificado</span>
+                                @elseif ($inscrito->estado == 5)
+                                    <span class="badge badge-warning">Generado</span>
                                 @endif
                             </td>
                             <td class="text-center">

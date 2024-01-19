@@ -21,6 +21,7 @@ class Course extends Model
         'linkGrupo',
         'estado',
         'imagen',
+        'imgCertificado',
     ];
 
     protected $attributes = [

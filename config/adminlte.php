@@ -377,7 +377,7 @@ return [
         ],
         [
             'text' => 'Matriculados',
-            'url'  => 'admin/settings',
+            'url'  => 'matriculados/index',
             'icon' => 'fas fa-fw fa-user-graduate',
         ],
         [

@@ -18,5 +18,6 @@ class Registered extends Model
         'estado',
         'fechaInscripcion',
         'fechaMatricula',
+        'nota',
     ];
 }

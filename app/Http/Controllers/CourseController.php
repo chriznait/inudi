@@ -40,6 +40,7 @@ class CourseController extends Controller
      */
     public function store(CourseRequest $request)
     {
+        //dd($request->all());
         $course = $request->all();
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');

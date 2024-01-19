@@ -29,10 +29,10 @@
         <section class="jumbotron text-center">
             <div class="container">
                 <h1 class="jumbotron-heading">
-                    <strong>PLATAFORMA DE CERTIFICACION DE CURSOS, DIPLOMAS Y OTROS</strong>
+                    <strong>PLATAFORMA DE CERTIFICACIONES DE CURSOS, DIPLOMAS, PUBLICACIONES Y OTROS</strong>
                 </h1>
                 <p class="text-center instituto">
-                    <strong>INSTITUTO UNIVERSITARIO DE INVESTIGACIÓN INUDI PERÚ</strong>
+                    <strong>INSTITUTO UNIVERSITARIO DE INVESTIGACIÓN CIENCIA Y TECNOLOGÍA INUDI PERÚ</strong>
                 </p>
             </div>
         </section>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="mb-3 row">
                                     <div class="col-sm-12 text-center">
-                                        <a type="submit" class="btn btn-success">Consultar</a>
+                                        <a type="submit" class="btn btn-success disabled">Consultar</a>
                                     </div>
                                 </div>
                             </form>
@@ -86,8 +86,8 @@
                         <div class="card-body">
                             <form action="{{ route('certificados.buscar')}}" method="GET">
                                 <div class="mb-3 row">
-                                    <label for="dniBuscar" class="col-sm-4 col-form-label"><strong>DNI:</strong></label>
-                                    <div class="col-sm-8">
+                                    <label for="dniBuscar" class="col-md-12 col-sm-12 col-xl-4 col-form-label"><strong>DNI:</strong></label>
+                                    <div class="col-sm-12 col-md-12 col-xl-8">
                                         <input type="text" class="form-control" name="dniBuscar" id="dniBuscar" placeholder="DNI">
                                     </div>
                                 </div>
@@ -106,12 +106,8 @@
                     @foreach($courses as $course )
                         <div class="card-deck">
                             <div class="card">
-                                @if($course->imagen)
-                                <img src="{{ asset('cursos').'/'.$course->imagen}}" alt="" class="card-img-top img-responsive">
-                                @else
-                                <img src="{{
-                                    asset('img/bn-congreso.jpg')
-                                }}" alt="" class="card-img-top img-responsive">
+                                @if($course->imagen!=null)
+                                    <img src="{{ asset('cursos').'/'.$course->imagen}}" alt="" class="card-img-top img-responsive">
                                 @endif
                                 
                                 <div class="card-body">
