@@ -32,7 +32,7 @@ class RegistroEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('admin@inudi.edu.pe','INSITUTTO UNIVERSITARIO DE INVESTIGACIÓN Y DESARROLLO INTEGRAL'),
+            from: new Address('admin@inudi.edu.pe','INUDI - PERU'),
             subject: 'INUDI - REGISTRO AL CURSO',
         );
     }

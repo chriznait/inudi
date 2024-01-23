@@ -53,7 +53,7 @@
 </head>
 <body>
     <div>
-       <img style="width: 100%;" src="{{ public_path('img/modCertificado/'.$course->imgCertificado) }}" alt=""> 
+       <img style="width: 100%;" src="{{ public_path().'/img/modCertificado/'.$course->imgCertificado }}" alt=""> 
     </div>
     <div class="nombre">
             CHRISTIAN JORDY MAMANI SUCASAIRE

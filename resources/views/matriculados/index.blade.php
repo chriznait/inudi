@@ -69,7 +69,7 @@
                 <thead class="bg-info text-white text-center">
                     <tr>
                         <th>ID</th>
-                        <th width="40%" >Nombre</th>
+                        <th width="40%" >Cursos</th>
                         <th>Codigo</th>
                         <th>Matriculados</th>
                         <th>Whassap</th>

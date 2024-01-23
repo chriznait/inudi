@@ -8,7 +8,7 @@ use App\Models\Course;
 use App\Models\Person;
 use App\Http\Controllers\CourseController;
 use App\Http\Requests\MatriculadoRequest;
-use Barryvdh\DomPDF\Facade\PDF;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 // 0 ANULADO
 // 1 registrado
@@ -106,7 +106,11 @@ class MatriculadoController extends Controller
         $registered = Registered::where('idCurso', '=', $id)
         ->where('estado', '=', '2')
         ->get();
-        $pdf = PDF::loadView('matriculados.modeloCertificado', compact('course', 'registered'));
+        $pdf = PDF::loadView('matriculados.modeloCertificado', 
+        [
+            'course' => $course,
+            'inscritos' => $registered,]
+        );
         $pdf->setPaper('A4', 'landscape');
         return $pdf->stream('certificado.pdf');
     }
@@ -152,7 +156,12 @@ class MatriculadoController extends Controller
         $registered->estado = 5;
         $registered->save();
 
-        $pdf=PDF::loadView('matriculados.download', compact('registered', 'persona','course'));
+        $pdf=PDF::loadView('matriculados.download', [
+            'registered' => $registered,
+            'persona' => $persona,
+            'course' => $course,
+            'codigo' => $codigo,
+        ]);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->download($codigo.'.pdf');
     }
