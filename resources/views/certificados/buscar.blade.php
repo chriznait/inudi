@@ -115,10 +115,11 @@
                                                 <td>{{ $certificado->nombreCurso }}</td>
                                                 <td>{{ $certificado->fechaCertificado }}</td>
                                                 <td class="text-center">
-                                                    <a href="{{
-                                                        asset('storage/certificados/'.$certificado->codigoCertificado.'.pdf')
-                                                    }}
-                                                    " class="btn btn-success btn-sm">Visualizar</a>
+                                                    @if(file_exists(public_path('certificados/'.$certificado->codigoCertificado.'.pdf')))
+                                                        <a target="_blank" href="{{asset('certificados/'.$certificado->codigoCertificado.'.pdf')}}" class="btn btn-success btn-sm">
+                                                            Visualizar
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             @endforeach

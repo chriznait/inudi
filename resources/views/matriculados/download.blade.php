@@ -12,19 +12,18 @@
         }
         .nombre{
             position: absolute;
-            top: 420px;
-            left: 220px;
+            top: {{ $course->nomEjeY }}px;
+            left: {{ $course->nomEjeX }}px;
             font-size: 24px;
             text-align: center;
             width: 860px;
             padding: 0px;
-            //border: 1px solid red;
             font-weight: bold;
         }
         #validacion{
             position: absolute;
-            top: 540px;
-            left: 220px;
+            top: {{ $course->notaEjeY }}px;
+            left: {{ $course->notaEjeX }}px;
             font-size: 16px;
             text-align: center;
             width: 200px;
@@ -36,8 +35,8 @@
         }
         #nota{
             position: absolute;
-            top: 540px;
-            left: 800px;
+            top: {{ $course->codigoEjeY }}px;
+            left: {{ $course->codigoEjeX }}px;
             font-size: 17px;
             text-align: center;
             width: 150px;

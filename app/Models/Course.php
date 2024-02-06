@@ -22,6 +22,12 @@ class Course extends Model
         'estado',
         'imagen',
         'imgCertificado',
+        'nomEjeX',
+        'nomEjeY',
+        'notaEjeX',
+        'notaEjeY',
+        'codigoEjeX',
+        'codigoEjeY',
     ];
 
     protected $attributes = [

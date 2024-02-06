@@ -12,8 +12,8 @@
         }
         .nombre{
             position: absolute;
-            top: 420px;
-            left: 220px;
+            top: {{ $course->nomEjeY }}px;
+            left: {{ $course->nomEjeX }}px;
             font-size: 24px;
             text-align: center;
             width: 860px;
@@ -23,8 +23,8 @@
         }
         #validacion{
             position: absolute;
-            top: 540px;
-            left: 220px;
+            top: {{ $course->notaEjeY }}px;
+            left: {{ $course->notaEjeX }}px;
             font-size: 16px;
             text-align: center;
             width: 200px;
@@ -36,8 +36,8 @@
         }
         #nota{
             position: absolute;
-            top: 540px;
-            left: 800px;
+            top: {{ $course->codigoEjeY}}px;
+            left: {{ $course->codigoEjeX }}px;
             font-size: 17px;
             text-align: center;
             width: 150px;
@@ -56,7 +56,7 @@
        <img style="width: 100%;" src="{{ public_path().'/img/modCertificado/'.$course->imgCertificado }}" alt=""> 
     </div>
     <div class="nombre">
-            CHRISTIAN JORDY MAMANI SUCASAIRE
+            CHRISTIAN JORDY MAMANI SUCASAIRE {{ $course->codigoEjeX}}
     </div>
     <div id="validacion">
         <span>Fuente de validación:</span>

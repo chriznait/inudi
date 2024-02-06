@@ -36,10 +36,6 @@ class MatriculadoController extends Controller
             'courses' => $courses,
         ]);
         
-        /*$result = (new CourseController)->index($request);
-        return view('matriculados.index', [
-            'courses' => $result['courses'],
-        ]);*/
     }
 
     public function show($id)
@@ -86,19 +82,17 @@ class MatriculadoController extends Controller
             $course->imgCertificado = $name;
             $file->move(public_path().'/img/modCertificado/', $name);
         }
+        $course->nomEjeX = $request->posXNombre;
+        $course->nomEjeY = $request->posYNombre;
+        $course->notaEjeX = $request->posXNota;
+        $course->notaEjeY = $request->posYNota;
+        $course->codigoEjeX = $request->posXCodigo;
+        $course->codigoEjeY = $request->posYCodigo;
         //dd($request->All());
         $course->save();
         return redirect()->route('matriculado.index')->with('success', 'Certificado subido exitosamente');
         
-        //dd($request->idCursoMat);
-        
     }
-
-    /*public function reportePdf(){
-        $matriculados = Registered::where('estado', '=', '2')->get();
-        $pdf = PDF::loadView('matriculados.modeloCertificado', compact('matriculados'));
-        return $pdf->('matriculados.pdf');
-    }*/
 
     public function export($id)
     {

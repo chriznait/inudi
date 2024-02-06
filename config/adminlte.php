@@ -381,6 +381,11 @@ return [
             'icon' => 'fas fa-fw fa-user-graduate',
         ],
         [
+            'text' => 'Certificados',
+            'url'  => 'certificados/certificadoIndex',
+            'icon' => 'fas fa-fw fa-certificate',
+        ],
+        [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',

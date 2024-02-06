@@ -13,6 +13,15 @@ use App\Models\Registered;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CertificadoRequest;
 
+// 0 ANULADO
+// 1 registrado
+// 2 matriculado
+// 3 finalizo el curso
+// 4 para certificado
+// 5 certificado generado
+// 6 certificado impreso
+// 7 certificado firmado
+// 8 certificado entregado
 
 
 class CertificadoController extends Controller
@@ -197,7 +206,100 @@ class CertificadoController extends Controller
             abort(404, 'El archivo no existe');
         }
     }
+
+    //ADMIN PARA ENVIAR CERTIFICADO DE UNA PERSONA QUE YA ESTA REGISTRADA
         
+    public function certificadoIndex()
+    {
+        $courses = Course::where('estado', '=', '1')->get()
+        ->sortByDesc('id');
+        foreach ($courses as $course) {
+            $course->registered = Registered::where('idCurso', '=', $course->id)
+            ->where('estado', '>=', '5')
+            ->count();
+        }
+
+        return view('certificados.certificadoIndex', [
+            'courses' => $courses,
+        ]);
+    }
+
+    public function verLista($id)
+    {
     
+        $course = Course::find($id);
+        $registered = Registered::join('people', 'people.id', '=', 'registereds.idPersona')
+        ->where('registereds.idCurso', '=', $id)
+        ->wherein('registereds.estado', [5,6,7,8])
+        ->get(
+            [
+                'registereds.id',
+                'registereds.idPersona',
+                'registereds.idCurso',
+                'registereds.estado',
+                'registereds.nota',
+                'registereds.codigoCertificado',
+                'people.nombre',
+                'people.apellido',
+                'people.nroDocumento',
+                'people.email',
+                'people.telefono',
+                
+            ]
+        );
+        $total = Registered::where('idCurso', '=', $id)
+        ->where('estado', '>=', '5')
+        ->get()->count();
+        //dd($course->id);
+        //dd($registered);
+        return view('certificados.verLista', [
+            'curso' => $course,
+            'inscritos' => $registered,
+            'total' => $total
+        ]);
+    }
+
+    public function uploadCertificado(Request $request)
+    {
+        $id = $request->input('idRegistro');
+        $certificado = Registered::find($id);
+        
+        if ($request->hasFile('pdfFirma')) {
+            $file = $request->file('pdfFirma');
+            $nombre = $certificado->codigoCertificado.'.pdf';
+
+            //dd($nombre);
+            if ($file->getClientOriginalExtension() != 'pdf') {
+                return redirect()->back()->with('error', 'El archivo no es un PDF');
+            }
+            elseif(file_exists(public_path('certificados/'.$certificado->codigoCertificado))){
+                return redirect()->back()->with('error', 'El archivo ya existe');
+            }else{
+                $file->move(public_path('certificados'), $nombre);
+                $certificado->codigoCertificado = $certificado->codigoCertificado;
+                $certificado->estado = 7;
+            }
+
+            $certificado->save();
+            
+            return redirect()->route('mail.sendCertificado', $id)->with('success', 'Se subio el certificado exitosamente');
+
+        }else {
+            return redirect()->back()->with('error', 'No se ha seleccionado un archivo');
+        }
+        
+    }
+
+    public function download($id)
+    {
+        $certificado = Registered::find($id);
+        $rutaCompleta = public_path('certificados/'.$certificado->codigoCertificado.'.pdf');
+        if (file_exists($rutaCompleta)) {
+            return response()->file($rutaCompleta);
+            //return $pdf->download($codigo.'.pdf');
+        } else {
+            abort(404, 'El archivo no existe');
+        }
+    }
 
 }

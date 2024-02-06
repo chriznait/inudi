@@ -76,6 +76,7 @@ Route::get('registered/export/{id}', [RegisteredController::class, 'export'])->n
 
 //mail
 Route::get('mail/send/{id}', [MailController::class, 'sendEmail'])->name('mail.send')->middleware('auth');
+Route::get('mail/sendCertificado/{id}', [MailController::class, 'sendCertificado'])->name('mail.sendCertificado')->middleware('auth');
 
 //matriculado
 Route::get('matriculados/index', [MatriculadoController::class, 'index'])->name('matriculado.index')->middleware('auth');
@@ -88,3 +89,9 @@ Route::get('matriculados/editCertificado/{id}', [MatriculadoController::class, '
 Route::put('matriculados/updateCertificado', [MatriculadoController::class, 'updateCertificado'])->name('matriculados.updateCertificado')->middleware('auth');
 Route::get('matriculados/download/{id}', [MatriculadoController::class, 'download'])->name('matriculados.download')->middleware('auth');
 Route::put('matriculados/generarCertificado', [MatriculadoController::class, 'generarCertificado'])->name('matriculados.generarCertificado')->middleware('auth');
+
+//Modulo certificados
+Route::get('certificados/certificadoIndex', [CertificadoController::class, 'certificadoIndex'])->name('certificados.certificadoIndex')->middleware('auth');
+Route::get('certificados/verLista/{id}', [CertificadoController::class, 'verLista'])->name('certificados.verLista')->middleware('auth');
+Route::post('certificados/uploadCertificado', [CertificadoController::class, 'uploadCertificado'])->name('certificados.uploadCertificado')->middleware('auth');
+Route::get('certificados/download/{id}', [CertificadoController::class, 'download'])->name('certificados.download')->middleware('auth');

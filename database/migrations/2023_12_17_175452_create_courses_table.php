@@ -25,6 +25,12 @@ return new class extends Migration
             $table->string('imgCertificado', 100)->nullable();
             $table->string('linkGrupo',60)->nullable();
             $table->boolean('estado')->default(1); 
+            $table->integer('nomEjeX')->nullable();
+            $table->integer('nomEjeY')->nullable();
+            $table->integer('notaEjeX')->nullable();
+            $table->integer('notaEjeY')->nullable();
+            $table->integer('codigoEjeX')->nullable();
+            $table->integer('codigoEjeY')->nullable();
             $table->timestamps();
         });
     }

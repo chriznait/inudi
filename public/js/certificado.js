@@ -34,3 +34,7 @@ $('#generarCertificados').on('show.bs.modal', function (event) {
     //$("#idCursoMat").val(id);
     console.log(id);
 });
+
+/*$('#modal-uploadCertificados').on('show.bs.modal', function(event){
+
+});*/

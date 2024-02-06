@@ -12,13 +12,10 @@
         }
         .nombre{
             position: absolute;
-            top: 420px;
-            left: 220px;
+            top: {{ $course->posYNombre }}px;
+            left: {{ $course->posXNombre }}px;
             font-size: 24px;
             text-align: center;
-            width: 860px;
-            padding: 0px;
-            border: 1px solid red;
             font-weight: bold;
         }
         #validacion{
@@ -56,7 +53,7 @@
        <img style="width: 100%;" src="{{ public_path('img/modCertificado/'.$course->imgCertificado) }}" alt=""> 
     </div>
     <div class="nombre">
-        CHRISTIAN JORDY MAMANI SUCASAIRE
+        CCHRISTIAN JORDY MAMANI
     </div>
     <div id="validacion">
         <span>Fuente de validación:</span>
