@@ -60,8 +60,9 @@ class CertificadoController extends Controller
         
     }
 
-    public function update(Request $datos)
+    public function update(CertificadoRequest $datos)
     {
+        //dd($datos->all());
         $array = array(
             'nombre' => $datos->nombre,
             'apellido' => $datos->apellido,
@@ -134,7 +135,14 @@ class CertificadoController extends Controller
         $pais = country::All();
         $departamento = department::where('idPais', '=', $datos->idPais)->get();
         $provincia = Province::where('idDepartamento', '=', $datos->idDepartamento)->get();
-        $distrito = District::where('idProvincia', '=', $datos->idProvincia)->get();
+        $codProv = Province::where('id', '=', $datos->idProvincia)->first();
+        //dd($codProv);
+        if($codProv == null){
+            $distrito = [];
+        }else{
+        $distrito = District::where('idProvincia', '=', $codProv->codigoProvincia)->get();
+        }
+        //dd($distrito);
         return view('certificados.inscripcion', ['datos' => $datos,
             'pais' => $pais,
             'valor' => $valor,
@@ -194,6 +202,30 @@ class CertificadoController extends Controller
             'dniBuscar' => $dni,
         ]);
     }
+    public function bCodigo(Request $request)
+    {
+        $codigo = $request->input('codigo');
+        $datos = Registered::where('codigoCertificado', '=', $codigo)->first();
+        //dd($datos);
+        if ($datos == null)
+        {
+            $valor =0; //no existe el codigo en la bd
+            $certificados = null;
+        }else{ //SI EXISTE EL DNI EN LA BD
+            $certificados = DB::table('registereds')
+            ->select('registereds.*', 'courses.nombreCurso')
+            ->join('courses', 'registereds.idCurso', '=', 'courses.id')
+            ->where('registereds.id', '=', $datos->id)
+            ->get();
+            $valor =1; //existe el codigo
+        }
+        //dd($certificados);
+        return view('certificados.buscar', ['datos' => $datos,
+            'valor' => $valor,
+            'certificados' => $certificados,
+            'codigoBuscar' => $codigo,
+        ]);
+    }
     //VER CERTIFICADO DE UNA PERSONA
     
     public function ver($rutaArchivo)
@@ -215,7 +247,7 @@ class CertificadoController extends Controller
         ->sortByDesc('id');
         foreach ($courses as $course) {
             $course->registered = Registered::where('idCurso', '=', $course->id)
-            ->where('estado', '>=', '5')
+            ->where('estado', '>=', '4')
             ->count();
         }
 
@@ -230,7 +262,7 @@ class CertificadoController extends Controller
         $course = Course::find($id);
         $registered = Registered::join('people', 'people.id', '=', 'registereds.idPersona')
         ->where('registereds.idCurso', '=', $id)
-        ->wherein('registereds.estado', [5,6,7,8])
+        ->wherein('registereds.estado', [4,5,6,7,8])
         ->get(
             [
                 'registereds.id',
@@ -239,6 +271,7 @@ class CertificadoController extends Controller
                 'registereds.estado',
                 'registereds.nota',
                 'registereds.codigoCertificado',
+                'registereds.fechaCertificado',
                 'people.nombre',
                 'people.apellido',
                 'people.nroDocumento',
@@ -248,7 +281,7 @@ class CertificadoController extends Controller
             ]
         );
         $total = Registered::where('idCurso', '=', $id)
-        ->where('estado', '>=', '5')
+        ->where('estado', '>=', '4')
         ->get()->count();
         //dd($course->id);
         //dd($registered);
@@ -277,7 +310,9 @@ class CertificadoController extends Controller
             }else{
                 $file->move(public_path('certificados'), $nombre);
                 $certificado->codigoCertificado = $certificado->codigoCertificado;
-                $certificado->estado = 7;
+                
+                ($certificado->estado == 8) ? $certificado->estado = 8 : $certificado->estado = 7;
+                //$certificado->estado = 7;
             }
 
             $certificado->save();
@@ -288,6 +323,9 @@ class CertificadoController extends Controller
             return redirect()->back()->with('error', 'No se ha seleccionado un archivo');
         }
         
+    }
+    public function prueba(){
+        return dd('hola');
     }
 
     public function download($id)

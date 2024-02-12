@@ -22,7 +22,7 @@
                         <input type="text" name="dni" id="dni" class="form-control" value='' disabled>
                     </div>
                     <div class="col-sm-12">
-                        <label for="certificado">Generar Certificado:</label>
+                        <label for="certificado">Generar Certificados:</label>
                         <select name="certificado" id="certificado" class="form-control">
                             <option value="">Seleccione</option>
                             <option value="1">SI</option>

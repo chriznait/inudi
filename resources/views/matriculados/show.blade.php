@@ -56,11 +56,13 @@
                 <div class="col-sm-6">
                     <button type="button" class="btn btn-primary float-right btn-sm" data-toggle="modal"
                         data-target="#generarCertificados" data-id="{{ $curso->id}}">
-                        <span class="fas fa-file-pdf
+                        <span class="fas fa-certificate
                         "></span>
                         Generar Certificado
-                    </button> 
+                    </button>
                     <a href="" class="btn btn-success float-right btn-sm">
+                        <span class="fas fa-file-pdf
+                        "></span>
                         Descargar Certificado
                     </a>
                 </div>
@@ -72,9 +74,9 @@
                     </div>
                 @endif
                 @if (session('generado'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-success alert-dismissible">
                         <strong>{{ session('generado') }}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">X</button>
                     </div>
                 @endif
 
@@ -159,8 +161,8 @@
     <div class="modal fade" id="generarCertificados" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header text-center">
-              <h5 class="modal-title " id="staticBackdropLabel"><b>Generar certificados</b></h5>
+            <div class="modal-header text-center bg-primary text-white">
+              <h5 class="modal-title" id="staticBackdropLabel"><b>Generar certificados:</b></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

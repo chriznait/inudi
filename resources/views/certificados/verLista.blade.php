@@ -54,15 +54,7 @@
                     </h3>
                 </div>
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary float-right btn-sm" data-toggle="modal"
-                        data-target="#generarCertificados" data-id="{{ $curso->id}}">
-                        <span class="fas fa-file-pdf
-                        "></span>
-                        Generar Certificado
-                    </button> 
-                    <a href="" class="btn btn-success float-right btn-sm">
-                        Descargar Certificado
-                    </a>
+                    
                 </div>
 
                 @if (session('success-destroy'))
@@ -123,7 +115,9 @@
                             <td>{{ $inscrito->email }}</td>
                             <td>{{ $inscrito->codigoCertificado }}</td>
                             <td>
-                                @if($inscrito->estado==5)
+                                @if ($inscrito->estado == 4)
+                                    <span class="badge badge-primary">Certificado</span>
+                                @elseif($inscrito->estado==5)
                                     <span class="badge badge-primary">Generado</span>
                                 @elseif($inscrito->estado==6)
                                     <span class="badge badge-danger">Impreso</span>
@@ -134,7 +128,7 @@
                                 @endif
 
                             </td>
-                            <td class="text-center">{{ $inscrito->fechaEnvio }}</td>
+                            <td class="text-center">{{ $inscrito->fechaCertificado }}</td>
                             
                             <td class="text-center">
                                 @if($inscrito->estado != 8)
@@ -148,6 +142,10 @@
                                     <a href="{{ route('certificados.download', $inscrito->id) }}" class="btn btn-sm btn-danger">
                                         <span class="fas fa-download"></span>
                                     </a>
+                                    <button type="button" class="btn btn-sm btn-success btnCertificado" data-toggle="modal"
+                                        data-target="#modal-uploadCertificados" data-id="{{ $inscrito->id }}">
+                                        Reenviar
+                                    </button>
                                 @endif
                                 
                             </td>

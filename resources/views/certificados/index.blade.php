@@ -63,7 +63,7 @@
                             <h5><strong>Consultar certificado</strong></h5>
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{ route('certificados.bCodigo')}}" method="GET">
                                 <div class="mb-3 row">
                                     <label for="codigo" class="col-sm-4 col-form-label">Código</label>
                                     <div class="col-sm-8">
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="mb-3 row">
                                     <div class="col-sm-12 text-center">
-                                        <a type="submit" class="btn btn-success disabled">Consultar</a>
+                                        <button type="submit" class="btn btn-success">Consultar</button>
                                     </div>
                                 </div>
                             </form>

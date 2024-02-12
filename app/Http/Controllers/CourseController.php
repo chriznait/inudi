@@ -59,6 +59,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        //dd($course);
         return view('courses.edit', compact('course'));
         
     }
@@ -68,8 +69,35 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //dd($request->all());
+
+        //dd($request->hasFile('imagen'));
+        //$course = $request->all();
+        //dd($request->id);
+        //dd($course['id']);
+        $nombreImg = Course::find($request->id);
+        //dd($nombreImg->imagen);
+        if ($request->hasFile('imagen')) {
+            //dd($request->hasFile('imagen'));
+            if(file_exists(public_path().'/cursos/'.$nombreImg->imagen) and !empty($nombreImg->imagen)){
+            unlink(public_path().'/cursos/'.$nombreImg->imagen);
+            //$request->imagen = '';
+            
+            }
+            //dd($request->all());
+            $file = $request->file('imagen');
+            $name = time().$file->getClientOriginalName();
+            //dd($course);
+            $request->imagen = $name;
+            $file->move(public_path().'/cursos/', $name);
+            //dd($course);
+            
+        }else{
+            $request->imagen = $nombreImg->imagen;
+        }
+
         $course->update($request->all());
+        $course->update(['imagen' => $request->imagen]);
+
 
         return redirect()->route('courses.index')->with('success-update', 'Curso actualizado exitosamente');
     }

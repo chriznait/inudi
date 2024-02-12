@@ -89,6 +89,16 @@
                     @endif
                     
                 </div>
+                <hr>
+                <div class="col-sm-6">
+                    @if (session('success-update'))
+                        <div class="alert alert-info alert-dismissible">
+                            <strong>{{ session('success-update') }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                            
+                        </div>
+                    @endif
+                </div>
             </div>
 
         </div>
@@ -132,7 +142,7 @@
                                 @endif
                             </td>
                             <td class="text-center">
-                                <a href="" class="btn btn-primary btn-sm">
+                                <a href="{{ route('registered.edit', $inscrito->id) }}" class="btn btn-primary btn-sm">
                                     <span class="fas fa-edit "></span>
                                 </a>
                                 @if($curso->linkGrupo != null && $inscrito->estado == 1)

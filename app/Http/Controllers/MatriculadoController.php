@@ -72,6 +72,14 @@ class MatriculadoController extends Controller
         ]);
     }
 
+    public function edit($id)
+    {
+        $course = Course::find($id);
+        return view('matriculados.edit', [
+            'course' => $course,
+        ]);
+    }
+
     public function subirCertificado(MatriculadoRequest $request)
     {
         $course = Course::find($request->idCursoMat);

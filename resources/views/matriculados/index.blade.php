@@ -113,9 +113,10 @@
                                 @endif
                             </td>
                             <td class="text-center">
-                                
                                 <a href="{{ route('matriculados.show', $course) }}" class="btn btn-sm btn-info @if($course->registered==null) disabled @endif">Ver</a>
-                                
+                                @if($course->imgCertificado != null)
+                                    <a href="{{ route('matriculados.edit', $course) }}" class="btn btn-sm btn-warning">Editar</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

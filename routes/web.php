@@ -56,6 +56,7 @@ Route::get('certificados/{id}/distrito', [CertificadoController::class, 'getDist
 Route::post('certificados/store', [CertificadoController::class, 'store'])->name('certificados.store');
 Route::put('certificados/update/{id}', [CertificadoController::class, 'update'])->name('certificados.update');
 Route::get('certificados/buscar', [CertificadoController::class, 'buscar'])->name('certificados.buscar');
+Route::get('certificados/bCodigo', [CertificadoController::class, 'bCodigo'])->name('certificados.bCodigo');
 Route::get('certificados/ver/{id}', [CertificadoController::class, 'ver'])->name('certificados.ver');
 
 //person
@@ -71,6 +72,8 @@ Route::get('person/show/{person}', [PersonController::class, 'show'])->name('per
 Route::get('registered/index/{id}', [RegisteredController::class, 'index'])->name('registered.index')->middleware('auth');
 Route::delete('registered/destroy/{id}', [RegisteredController::class, 'destroy'])->name('registered.destroy')->middleware('auth');
 Route::get('registered/matricular/{id}', [RegisteredController::class, 'matricular'])->name('registered.matricular')->middleware('auth');
+Route::get('registered/edit/{id}', [RegisteredController::class, 'edit'])->name('registered.edit')->middleware('auth');
+Route::put('registered/update/{id}', [RegisteredController::class, 'update'])->name('registered.update')->middleware('auth');
 //export
 Route::get('registered/export/{id}', [RegisteredController::class, 'export'])->name('registered.export')->middleware('auth');
 
@@ -81,6 +84,7 @@ Route::get('mail/sendCertificado/{id}', [MailController::class, 'sendCertificado
 //matriculado
 Route::get('matriculados/index', [MatriculadoController::class, 'index'])->name('matriculado.index')->middleware('auth');
 Route::get('matriculados/show/{couse}', [MatriculadoController::class, 'show'])->name('matriculados.show')->middleware('auth');
+Route::get('matriculados/edit/{id}', [MatriculadoController::class, 'edit'])->name('matriculados.edit')->middleware('auth');
 //subirCertificado
 Route::post('matriculados/subirCertificado', [MatriculadoController::class, 'subirCertificado'])->name('matriculados.subirCertificado')->middleware('auth');
 //export

@@ -2,7 +2,7 @@ $(document).ready(function() {
     var modalInscripcion = $('#modal-inscripcion');
     //loadDepartamento(document.getElementById('idPais'));
     //loadProvincia(document.getElementById('idDepartamento'));
-    //load(document.getElementById('idDepartamento'));
+    //loadDistrito(document.getElementById('idProvincia'));
 
     $('.modalInscripcion').click(function(e) {
         //alert('hola');

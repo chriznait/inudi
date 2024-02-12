@@ -27,10 +27,18 @@
                     <hr>
                     <div class="col-sm-12">
                         <br>
-                        <button type="submit" class="btn btn-primary float-right">Subir</button>
+                        <button type="submit" class="btn btn-primary float-right" id="enviarArchivoCorreo">
+                            <span class="" id="text-cargando">
+                               Subir 
+                            </span>
+                            
+                        </button>
+                        <span class="text-red float-right" id="cargando">Cargando...</span>
                     </div>
+                    
                 </div>
             </form>
+            
         </div>
       </div>
     </div>

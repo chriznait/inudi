@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $("#cargando").hide();
 
     $('.btnCertificado').click(function() {
         var id = $(this).data('id');
@@ -23,6 +24,15 @@ $(document).ready(function() {
         });
     });
 
+    $("#enviarArchivoCorreo").click(function() {
+        var id = $("#idRegistro").val();
+        var formData = new FormData($("#formGenerarCertificado")[0]);
+        console.log(formData);
+        $("#cargando").show();
+        $("#enviarArchivoCorreo").hide();
+
+    });
+
 
 
 });
@@ -35,6 +45,3 @@ $('#generarCertificados').on('show.bs.modal', function (event) {
     console.log(id);
 });
 
-/*$('#modal-uploadCertificados').on('show.bs.modal', function(event){
-
-});*/

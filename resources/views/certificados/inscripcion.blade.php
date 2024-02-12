@@ -91,6 +91,15 @@
 
 
                         <div class="card-body">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             @if($valor==0 || $valor==1)
 
                                 @if ($valor=='1')
@@ -107,7 +116,7 @@
                                     <div class="mb-3 row">
                                         <label for="nroDocumento" class="col-sm-4 col-form-label text-end"><strong>DNI:</strong> </label>
                                         <div class="col-sm-8">
-                                            <input type="text" {{($valor=='1')?'disabled':'readonly'}}
+                                            <input type="text" {{($valor=='1')?'readonly':'readonly'}}
                                             class="form-control" name="nroDocumento" id="nroDocumento" placeholder="DNI" value="{{$datos->nroDocumento??''}}">
                                             <input type="hidden" name="idPersona" id="idPersona" value="{{$datos->id}}">
                                         </div>
@@ -220,7 +229,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="idDistrito" class="col-sm-4 col-form-label text-end">Distrito</label>
+                                        <label for="idDistrito" class="col-sm-4 col-form-label text-end">Distrito {{$datos->idDistrito}}</label>
                                         <div class="col-sm-8">
                                             <select class="form-control select2" name="idDistrito" id="idDistrito">
                                                 <option value="">Seleccione</option>  

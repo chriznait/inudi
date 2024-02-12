@@ -3,7 +3,7 @@
 @section('content_header')
     <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">EDITAR CURSO Nº {{$course->id }}</h1>
+            <h1 class="m-0 text-dark">EDITAR CERTIFICADO Nº {{$course->id }}</h1>
         </div>
        
     </div>
@@ -14,13 +14,16 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('courses.update', $course)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('courses.update', $course)}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="">
-                    <input type="hidden" name="id" value="{{ $course->id }}">
+                    <div class="col-sm-12">
+                        <p><span class="bagde bagde-info">(*) Eje X inicia de izquierda a derecha</span></p>
+                        <p><span class=>(*) Eje Y inicia de arriba hacia abajo</span></p>
+                    </div>
                     <div class="mb-3 row">
-                        <label for="nombreCurso" class="col-sm-2 col-form-label">Nombre</label>
+                        <label for="nombreCurso" class="col-sm-2 col-form-label">Nombre Eje X</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="nombreCurso" id="nombreCurso" value="{{ $course->nombreCurso}}" >
                             
@@ -74,14 +77,6 @@
                         <div class="col-sm-10">
                             <input type="date" class="form-control" name="fechaFinInscripcion" id="fechaFinInscripcion" placeholder="Fin Inscripcion" value="{{$course->fechaFinInscripcion }}">
                             
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="">Imagen</label>
-                        <img src="{{ asset('cursos').'/'.$course->imagen }}" alt="" width="200" />
-
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen del curso" value="{{$course->imagen }}">
                         </div>
                     </div>
                     <span class="text-success">
